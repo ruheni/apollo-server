@@ -6,14 +6,17 @@ const ProductSchema = new Schema({
 	length: {
 		type: Number,
 		required: true,
+		trim: true,
 	},
 	variety: {
 		type: String,
 		required: true,
+		trim: true,
 	},
 	quantity: {
 		type: Number,
 		required: true,
+		trim: true,
 	},
 	color: {
 		type: String,

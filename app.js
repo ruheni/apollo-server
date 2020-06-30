@@ -1,9 +1,11 @@
-require('dotenv').config({ path: './.env' })
+import dotenv from 'dotenv'
 import { ApolloServer } from 'apollo-server-express'
 import express from 'express'
 import connectDB from './src/util/db'
 import resolvers from './src/resolvers'
 import typeDefs from './src/typeDefs'
+
+dotenv.config()
 
 const startServer = async () => {
 	const app = express()
@@ -13,6 +15,9 @@ const startServer = async () => {
 	const server = new ApolloServer({
 		typeDefs,
 		resolvers,
+		tracing: true,
+		cors: true,
+		introspection: true,
 	})
 
 	server.applyMiddleware({ app })
