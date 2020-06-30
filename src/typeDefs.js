@@ -62,9 +62,7 @@ const typeDefs = gql`
 		phoneNumber: String
 	}
 
-	"""
-	Flower colors
-	"""
+	"""Flower colors"""
 	enum Color {
 		BI_COLOUR
 		CERISE
@@ -76,9 +74,7 @@ const typeDefs = gql`
 		WHITE
 		YELLOW
 	}
-	"""
-	These are the different roles supported on the platform
-	"""
+	"""These are the different roles supported on the platform"""
 	enum Role {
 		ADMIN
 		GENERAL_MANAGER
@@ -86,17 +82,13 @@ const typeDefs = gql`
 		STOCK_CLERK
 	}
 
-	"""
-	Flower grades
-	"""
+	"""Flower grades"""
 	enum Grade {
 		GRADED
 		UNGRADED
 	}
 
-	"""
-	Order statuses
-	"""
+	"""Order statuses"""
 	enum OrderStatus {
 		CANCELLED
 		PENDING
