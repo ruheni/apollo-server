@@ -7,7 +7,7 @@ import typeDefs from './src/typeDefs'
 
 dotenv.config()
 
-const startServer = async () => {
+const startServer = () => {
 	const app = express()
 
 	connectDB()
