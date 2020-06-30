@@ -6,20 +6,20 @@ import resolvers from './src/resolvers'
 import typeDefs from './src/typeDefs'
 
 const startServer = async () => {
-  const app = express()
+	const app = express()
 
-  connectDB()
+	connectDB()
 
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers
-  })
+	const server = new ApolloServer({
+		typeDefs,
+		resolvers,
+	})
 
-  server.applyMiddleware({ app })
+	server.applyMiddleware({ app })
 
-  app.listen({ port: 4000 }, () =>
-    console.log(`🚀  Server ready at localhost:4000/${server.graphqlPath}`)
-  )
+	app.listen({ port: 4000 }, () =>
+		console.log(`🚀  Server ready at localhost:4000/${server.graphqlPath}`),
+	)
 }
 
 startServer()
