@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app.js",
-    "dev": "cross-env NODE_ENV=development nodemon app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node app.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.+(js|json|md)\""
@@ -20,12 +20,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.15.1",
+    "apollo-server-express": "^2.15.1",
+    "express": "^4.17.1",
     "graphql": "^15.1.0",
     "mongoose": "^5.9.20"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "eslint": "^7.3.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5"

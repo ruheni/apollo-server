@@ -1,35 +1,25 @@
-const { ApolloServer, gql } = require('apollo-server')
+require('dotenv').config({ path: './.env' })
+import { ApolloServer } from 'apollo-server-express'
+import express from 'express'
+import connectDB from './src/util/db'
+import resolvers from './src/resolvers'
+import typeDefs from './src/typeDefs'
 
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
+const startServer = async () => {
+  const app = express()
 
-  type Query {
-    books: [Book]
-  }
-`
+  connectDB()
 
-const books = [
-  {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
-  },
-  {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-]
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers
+  })
 
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
+  server.applyMiddleware({ app })
+
+  app.listen({ port: 4000 }, () =>
+    console.log(`🚀  Server ready at localhost:4000/${server.graphqlPath}`)
+  )
 }
 
-const server = new ApolloServer({ typeDefs, resolvers })
-
-server.listen().then(({ url }) => {
-  console.log(`??  Server ready at ${url}`)
-})
+startServer()
